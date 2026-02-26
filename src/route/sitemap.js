@@ -31,7 +31,7 @@ export default function route (app) {
 
 function generateLoc (prophecy) {
   return `<url>
-    <loc>${config.webHost}/${prophecy.slug}</loc>
+    <loc>${config.webHost}/en/${prophecy.slug}</loc>
     <lastmod>${prophecy.date}</lastmod>
     <changefreq>never</changefreq>
     <priority>0.9</priority>
