@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    position: relative;
+}
+
+.page::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.content {
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.5s ease forwards;
+}
+
+.error-code {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(7rem, 22vw, 12rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 107, 53, 0.25);
+    user-select: none;
+    margin-bottom: -10px;
+    position: relative;
+}
+
+.error-code::after {
+    content: '404';
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    -webkit-text-stroke: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.55) 0%, rgba(255, 107, 53, 0.1) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: blur(18px);
+    pointer-events: none;
+}
+
+.tag {
+    display: inline-block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255, 107, 53, 0.09);
+    color: var(--orange);
+    border: 1px solid rgba(255, 107, 53, 0.16);
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+}
+
+.title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.5rem, 5vw, 2.1rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+.title em {
+    font-style: italic;
+    color: var(--orange);
+}
+
+.desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+@media (max-width: 480px) {
+    .nav-inner {
+        padding: 0 16px;
+    }
+
+    .page {
+        padding: 30px 16px;
+    }
+}

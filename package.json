@@ -1,0 +1,51 @@
+{
+  "name": "worldend",
+  "version": "1.0.0",
+  "description": "A living archive of AI-generated doomsday prophecies.",
+  "private": true,
+  "type": "module",
+  "homepage": "https://worldend.ai",
+  "imports": {
+    "#db/*": "./src/db/*",
+    "#lib/*": "./src/lib/*",
+    "#route/*": "./src/route/*",
+    "#scheduled/*": "./src/scheduled/*",
+    "#service/*": "./src/service/*",
+    "#views/*": "./src/views/*"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "dev": "wrangler dev",
+    "dev:scheduled": "wrangler dev --config wrangler.scheduled.jsonc",
+    "deploy": "wrangler deploy",
+    "deploy:scheduled": "wrangler deploy --config wrangler.scheduled.jsonc",
+    "sql:generate": "drizzle-kit generate --dialect sqlite --schema src/db/schema --out ./drizzle --name index",
+    "sql:migrate:local": "wrangler d1 execute DB --local --file=drizzle/0000_index.sql",
+    "sql:migrate:remote": "wrangler d1 execute DB --remote --file=drizzle/0000_index.sql",
+    "sql:export:remote": "npx wrangler d1 export worldend --remote --output worldend.sql"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.9",
+    "eslint": "9.39.2",
+    "neostandard": "0.12.2",
+    "wrangler": "4.68.1"
+  },
+  "dependencies": {
+    "@cf-wasm/resvg": "0.3.3",
+    "@hoajs/bodyparser": "0.1.2",
+    "@hoajs/context-storage": "0.1.2",
+    "@hoajs/cors": "0.1.3",
+    "@hoajs/mustache": "0.1.1",
+    "@hoajs/nana": "0.1.1",
+    "@hoajs/tiny-router": "0.1.1",
+    "cloudflare-kv-cache": "1.0.1",
+    "dayjs": "1.11.19",
+    "drizzle-orm": "0.45.1",
+    "hoa": "0.3.5",
+    "lodash-es": "4.17.23",
+    "nana": "1.3.0",
+    "p-all": "5.0.1",
+    "validator": "13.15.26"
+  }
+}

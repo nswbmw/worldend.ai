@@ -1,0 +1,568 @@
+/* ─── MAIN LAYOUT ─── */
+.main-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px 24px;
+  display: grid;
+  grid-template-columns: 1fr 288px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ─── TAG ─── */
+.tag {
+  display: inline-block;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 107, 53, 0.09);
+  color: var(--orange);
+  border: 1px solid rgba(255, 107, 53, 0.16);
+  letter-spacing: 0.05em;
+}
+
+/* ─── PROPHECY CARD ─── */
+.prophecy-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 17px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: all 0.18s ease;
+}
+
+.prophecy-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 107, 53, 0.2);
+}
+
+.prophecy-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.prophecy-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: color 0.18s;
+}
+
+.prophecy-card:hover .prophecy-title {
+  color: var(--orange);
+}
+
+.prophecy-content {
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.62;
+}
+
+.meta-info {
+}
+
+/* ─── SHARE BUTTON ─── */
+.share-btn {
+  color: var(--text-muted);
+}
+
+.share-btn:hover {
+  color: var(--orange);
+}
+
+.share-btn.shared {
+  color: var(--orange);
+}
+
+.share-toast {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 0.65rem;
+  color: var(--orange);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  font-family: 'Geist Mono', monospace;
+  letter-spacing: 0.02em;
+  animation: toastIn 0.15s ease;
+}
+/* ─── PROPHECY LIST ─── */
+.prophecy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.load-more-wrap {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.load-more-btn {
+  font-size: 0.77rem;
+  font-weight: 500;
+  padding: 9px 22px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.load-more-btn:hover {
+  background: rgba(255, 107, 53, 0.09);
+  color: var(--orange);
+  border-color: rgba(255, 107, 53, 0.28);
+}
+
+/* ─── SKELETON ─── */
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-card {
+  display: flex;
+  gap: 13px;
+  padding: 15px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.skeleton-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.skeleton-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 5px;
+}
+
+.skeleton-row-sm {
+  height: 10px;
+  width: 60%;
+  border-radius: 3px;
+}
+
+.skeleton-row-md {
+  height: 14px;
+  width: 88%;
+}
+
+.skeleton-row-base {
+  height: 11px;
+  width: 75%;
+}
+
+.skeleton-row-xs {
+  height: 10px;
+  width: 42%;
+}
+
+/* ─── MODAL ─── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  padding: 26px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.modal-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255, 107, 53, 0.12);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.modal-subtitle {
+  font-size: 0.67rem;
+  color: var(--text-muted);
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.api-block {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.api-block-label {
+  padding: 7px 13px;
+  background: rgba(128, 128, 128, 0.04);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.57rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.api-block-url {
+  padding: 11px 13px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.71rem;
+  color: #63b3ed;
+  word-break: break-all;
+}
+
+.api-block-tags {
+  padding: 11px 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.api-model-tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.62rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 107, 53, 0.07);
+  color: var(--orange);
+  border: 1px solid rgba(255, 107, 53, 0.14);
+}
+
+/* ─── SCROLL TOP ─── */
+.scroll-top {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 38px;
+  height: 38px;
+  background: var(--orange);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 50;
+  transition: transform 0.2s;
+}
+
+.scroll-top:hover {
+  transform: translateY(-2px);
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: calc(57px + 26px);
+}
+
+.sidebar-widget {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  padding: 16px;
+}
+
+.sidebar-title {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-cell {
+  background: rgba(255, 107, 53, 0.05);
+  border: 1px solid rgba(255, 107, 53, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Geist Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--orange);
+}
+
+.stat-label {
+  font-size: 0.61rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Models */
+.models-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag-clickable {
+  cursor: pointer;
+}
+
+/* Ranking */
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 6px;
+  padding: 3px 4px;
+  margin: -3px -4px;
+  transition: background 0.15s;
+}
+
+.ranking-item:hover {
+  background: rgba(255, 107, 53, 0.07);
+}
+
+.ranking-item:hover .ranking-name {
+  color: var(--orange);
+}
+
+.ranking-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 107, 53, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.ranking-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ranking-name {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ranking-count {
+  font-size: 0.61rem;
+  color: var(--text-muted);
+}
+
+.ranking-percent {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.61rem;
+  color: var(--text-secondary);
+}
+
+/* API button */
+.action-btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn-group .api-btn {
+  flex: 1;
+  text-decoration: none;
+}
+
+.rss-btn {
+  color: var(--orange);
+}
+
+.rss-btn:hover {
+  background: rgba(255, 107, 53, 0.14);
+}
+
+.api-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 9px;
+  border-radius: 8px;
+  background: rgba(255, 107, 53, 0.07);
+  border: 1px solid rgba(255, 107, 53, 0.13);
+  color: var(--orange);
+  font-size: 0.68rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.api-btn:hover {
+  background: rgba(255, 107, 53, 0.14);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .sidebar {
+    position: static;
+    top: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .search-input {
+    width: 140px;
+  }
+
+  .search-input:focus {
+    width: 170px;
+  }
+
+  .prophecy-title {
+    font-size: 1rem;
+  }
+
+  .prophecy-content {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    /*-webkit-line-clamp: 3;*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-inner {
+    padding: 0 14px;
+    gap: 7px;
+  }
+
+  .logo-mark {
+    font-size: 1.1rem;
+  }
+
+  .search-input {
+    width: 110px;
+  }
+
+  .search-input:focus {
+    width: 140px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main-layout {
+    padding: 12px;
+  }
+
+  .prophecy-card {
+    padding: 13px 14px;
+  }
+
+  .action-btn-group {
+    gap: 6px;
+  }
+}

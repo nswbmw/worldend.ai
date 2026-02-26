@@ -1,0 +1,49 @@
+{
+  "account_id": "8660656933726fd46f17b9f54889b592",
+  "name": "worldend",
+  "main": "src/index.js",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "compatibility_date": "2026-02-26",
+  "workers_dev": false,
+  "no_bundle": false,
+  "minify": true,
+  "routes": [
+    {
+      "pattern": "worldend.ai/*",
+      "zone_name": "worldend.ai"
+    },
+    {
+      "pattern": "www.worldend.ai/*",
+      "zone_name": "worldend.ai"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "92021378d9c04b23a20d13006eb5e4ca"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "worldend",
+      "database_id": "bf3e0643-9bef-4770-b12c-59e3f69ec6d3"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "worldend"
+    }
+  ]
+}
