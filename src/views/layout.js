@@ -40,6 +40,7 @@ const layout = `<!DOCTYPE html>
   </main>
   {{> apiModal}}
   {{> scrollTop}}
+  {{> footer}}
   {{> scripts}}
 </body>
 </html>`
