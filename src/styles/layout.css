@@ -1,3 +1,6 @@
+@import './tw.css';
+@import './base.css';
+
 /* ─── MAIN LAYOUT ─── */
 .main-layout {
   max-width: 1200px;

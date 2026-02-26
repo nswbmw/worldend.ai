@@ -6,7 +6,6 @@ const notFound = `<!DOCTYPE html>
   <title>404 — WorldEnd.ai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/base.css" />
   <link rel="stylesheet" href="/styles/404.css" />
   {{> googleAnalysis}}
 </head>
