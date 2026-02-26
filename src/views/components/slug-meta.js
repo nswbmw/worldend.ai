@@ -18,6 +18,6 @@ const slugMeta = `
   <meta name="twitter:data1" content="{{prophecy.modelId}}" />
   <meta name="twitter:label2" content="Date" />
   <meta name="twitter:data2" content="{{prophecy.date}}" />
-  <script type="application/ld+json">{{head.jsonLd}}</script>
+  <script type="application/ld+json">{{{head.jsonLd}}}</script>
 `
 export default slugMeta

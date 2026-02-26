@@ -88,7 +88,7 @@ export default function route (app) {
           mainEntityOfPage: canonical,
           author: { '@type': 'Organization', name: prophecy.modelId },
           publisher: { '@type': 'Organization', name: 'WorldEnd.ai' }
-        })
+        }, null, 2)
         const ogImage = `${config.webHost}/${lang}/${prophecy.slug}/og`
         const head = {
           canonical,
@@ -111,7 +111,7 @@ export default function route (app) {
         ctx.res.type = 'text/html'
         ctx.res.body = renderLayout(
           ctx,
-          { lang, head, title: `${prophecy.tag || prophecy.slug} | `, initJson },
+          { lang, head, prophecy, title: `${prophecy.tag || prophecy.slug} | `, initJson },
           { headMeta: slugMetaTemplate, content: prophecyTemplate }
         )
       } else {
