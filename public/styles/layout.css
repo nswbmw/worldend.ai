@@ -7,6 +7,7 @@
   grid-template-columns: 1fr 288px;
   gap: 28px;
   align-items: start;
+  flex: 1;
 }
 
 /* ─── TAG ─── */
