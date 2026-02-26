@@ -60,7 +60,6 @@ const config = {
   domain: 'worldend.ai',
   email: 'admin@worldend.ai',
   webHost: 'https://worldend.ai',
-  apiHost: 'https://api.worldend.ai',
   langs,
   models,
   modelIds,
