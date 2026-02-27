@@ -573,7 +573,7 @@
 /* ─── FOOTER ─── */
 .footer {
   border-top: 1px solid var(--border);
-  padding: 12px 24px;
+  padding: 24px;
   background: var(--bg-card);
 }
 
@@ -618,7 +618,7 @@
 
 @media (max-width: 480px) {
   .footer {
-    padding: 12px 16px;
+    padding: 16px;
     margin-top: 40px;
   }
 
