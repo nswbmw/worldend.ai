@@ -170,3 +170,4 @@ test.js
 *.sql
 *.html
 src/lib/config.js
+/public/styles/**

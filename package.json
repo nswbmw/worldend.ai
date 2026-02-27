@@ -18,6 +18,10 @@
     "lint:fix": "eslint . --fix",
     "dev": "wrangler dev",
     "dev:scheduled": "wrangler dev --config wrangler.scheduled.jsonc",
+    "dev:css": "npx postcss ./src/styles/**/*.css --dir ./public/styles/ --base ./src/styles --watch",
+    "build:css:layout": "npx postcss ./src/styles/layout.css -o ./public/styles/layout.css",
+    "build:css:404": "npx postcss ./src/styles/404.css -o ./public/styles/404.css",
+    "predeploy": "pnpm run build:css:layout && pnpm run build:css:404",
     "deploy": "wrangler deploy",
     "deploy:scheduled": "wrangler deploy --config wrangler.scheduled.jsonc",
     "sql:generate": "drizzle-kit generate --dialect sqlite --schema src/db/schema --out ./drizzle --name index",
@@ -26,9 +30,16 @@
     "sql:export:remote": "npx wrangler d1 export worldend --remote --output worldend.sql"
   },
   "devDependencies": {
+    "autoprefixer": "10.4.20",
+    "cssnano": "6.1.2",
     "drizzle-kit": "0.31.9",
     "eslint": "9.39.2",
     "neostandard": "0.12.2",
+    "postcss": "8.4.41",
+    "postcss-cli": "11.0.0",
+    "postcss-import": "16.1.0",
+    "tailwindcss": "3.4.17",
+    "typescript": "^5.9.3",
     "wrangler": "4.68.1"
   },
   "dependencies": {

@@ -1,3 +1,6 @@
+@import './tw.css';
+@import './base.css';
+
 /* ─── MAIN LAYOUT ─── */
 .main-layout {
   max-width: 1200px;
@@ -7,7 +10,6 @@
   grid-template-columns: 1fr 288px;
   gap: 28px;
   align-items: start;
-  flex: 1;
 }
 
 /* ─── TAG ─── */
@@ -571,8 +573,7 @@
 /* ─── FOOTER ─── */
 .footer {
   border-top: 1px solid var(--border);
-  margin-top: 60px;
-  padding: 32px 24px;
+  padding: 24px;
   background: var(--bg-card);
 }
 
@@ -582,7 +583,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
 }
 
 .footer-copyright {
@@ -618,13 +618,13 @@
 
 @media (max-width: 480px) {
   .footer {
-    padding: 24px 16px;
+    padding: 16px;
     margin-top: 40px;
   }
 
   .footer-content {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     text-align: center;
   }
 

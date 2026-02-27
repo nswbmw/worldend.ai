@@ -29,6 +29,7 @@
 
 ```
 npm run dev
+npm run dev:css
 # or
 npm run deploy
 ```
