@@ -5,7 +5,7 @@ const layout = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="color-scheme" content="dark light">
   <script>
-    (function(){
+    (function() {
       try {
         const theme = localStorage.getItem('wd_darkMode');
         let effectiveTheme;
