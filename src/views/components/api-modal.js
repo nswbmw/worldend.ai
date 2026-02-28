@@ -1,3 +1,5 @@
+import config from '#lib/config.js'
+
 const apiModal = `
   <div 
     class="modal-backdrop"
@@ -19,22 +21,22 @@ const apiModal = `
           </svg>
         </div>
         <div>
-          <div class="modal-title">WorldEnd.ai API</div>
+          <div class="modal-title">${config.brandName} API</div>
           <div class="modal-subtitle">Access prophecies from all AI models</div>
         </div>
       </div>
       <div class="modal-body">
         <div class="api-block">
           <div class="api-block-label">GET PROPHECIES</div>
-          <div class="api-block-url">GET https://worldend.ai/$\{lang\}?type=json&date=$\{date\}&modelId=$\{modelId\}&tag=$\{tag\}&page=$\{page\}&pageSize=$\{pageSize\}</div>
+          <div class="api-block-url">GET ${config.webHost}/$\{lang\}?type=json&date=$\{date\}&modelId=$\{modelId\}&tag=$\{tag\}&page=$\{page\}&pageSize=$\{pageSize\}</div>
         </div>
         <div class="api-block">
           <div class="api-block-label">SEARCH PROPHECIES</div>
-          <div class="api-block-url">GET https://worldend.ai/$\{lang\}?type=json&keyword=$\{keyword\}&page=$\{page\}&pageSize=$\{pageSize\}</div>
+          <div class="api-block-url">GET ${config.webHost}/$\{lang\}?type=json&keyword=$\{keyword\}&page=$\{page\}&pageSize=$\{pageSize\}</div>
         </div>
         <div class="api-block">
           <div class="api-block-label">GET PROPHECY DETAIL</div>
-          <div class="api-block-url">GET https://worldend.ai/$\{lang\}/$\{slug\}?type=json</div>
+          <div class="api-block-url">GET ${config.webHost}/$\{lang\}/$\{slug\}?type=json</div>
         </div>
         <div class="api-block">
           <div class="api-block-label">$lang</div>

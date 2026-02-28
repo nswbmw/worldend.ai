@@ -1,4 +1,5 @@
 import { nanaValidator } from '@hoajs/nana'
+
 import config from '#lib/config.js'
 import n from '#lib/nana.js'
 import { translateWithCache } from '#lib/translate.js'
@@ -69,6 +70,8 @@ export default function route (app) {
         prophecy.tag = translatedTag
         prophecy.content = translatedContent
       }
+      prophecy.url = `${config.webHost}/${lang}/${prophecy.slug}`
+      prophecy.image = `${prophecy.url}/og`
 
       if (type === 'html') {
         const [stats, modelIds, prophecyRanking] = await Promise.all([
@@ -76,42 +79,37 @@ export default function route (app) {
           getModelIdsWithCache(),
           getProphecyTagsWithCache()
         ])
-        const canonical = `${config.webHost}/${lang}/${prophecy.slug}`
-        const title = prophecy.tag || prophecy.slug
         const description = String(prophecy.content || '').replace(/\s+/g, ' ').trim().slice(0, 160)
         const jsonLd = JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: title,
+          headline: prophecy.tag,
           datePublished: prophecy.date,
           dateModified: prophecy.date,
-          mainEntityOfPage: canonical,
+          mainEntityOfPage: prophecy.url,
           author: { '@type': 'Organization', name: prophecy.modelId },
-          publisher: { '@type': 'Organization', name: 'WorldEnd.ai' }
+          publisher: { '@type': 'Organization', name: config.brandName }
         }, null, 2)
-        const ogImage = `${config.webHost}/${lang}/${prophecy.slug}/og`
         const head = {
-          canonical,
+          canonical: prophecy.url,
+          title: `${prophecy.tag} - ${config.brandName}`,
           description,
-          title,
-          ogImage,
           jsonLd
         }
         const initJson = JSON.stringify({
           lang,
           prophecy: {
             ...prophecy,
-            content: prophecy.content.replaceAll('\n', '<br>'),
-            url: `${config.webHost}/${lang}/${prophecy.slug}`
+            content: prophecy.content.replaceAll('\n', '<br>')
           },
           models: modelIds,
           stats,
           prophecyRanking
         })
-        ctx.res.type = 'text/html'
+        ctx.res.type = 'html'
         ctx.res.body = renderLayout(
           ctx,
-          { lang, head, prophecy, title: `${prophecy.tag || prophecy.slug} | `, initJson },
+          { lang, head, prophecy, title: `${prophecy.tag} - `, initJson },
           { headMeta: slugMetaTemplate, content: prophecyTemplate }
         )
       } else {

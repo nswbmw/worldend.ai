@@ -29,7 +29,7 @@
     "drizzle-kit": "0.31.9",
     "eslint": "9.39.2",
     "neostandard": "0.12.2",
-    "wrangler": "4.68.1"
+    "wrangler": "4.69.0"
   },
   "dependencies": {
     "@cf-wasm/resvg": "0.3.3",

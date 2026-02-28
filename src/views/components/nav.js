@@ -1,8 +1,10 @@
+import config from '#lib/config.js'
+
 const nav = `
   <nav class="nav">
     <div class="nav-inner">
       <div class="logo-wrap">
-        <a :href="'/' + currentLang" class='decoration-none'><span class="logo-mark">WorldEnd.ai</span></a>
+        <a :href="'/' + currentLang" class='decoration-none'><span class="logo-mark">${config.brandName}</span></a>
       </div>
       <div class="nav-spacer"></div>
       <div class="search-wrap">

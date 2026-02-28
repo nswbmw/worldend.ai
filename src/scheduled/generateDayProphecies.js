@@ -158,7 +158,7 @@ export async function generateOgImage ({ env, tag, content, date, modelId, fontB
     <!-- Orange accent bar left -->
     <rect x="0" y="0" width="6" height="630" fill="#FF6B35"/>
     <!-- Site name -->
-    <text x="64" y="72" font-family="Noto Serif" font-size="26" fill="#FF6B35" letter-spacing="2" font-weight="bold">WorldEnd.ai</text>
+    <text x="64" y="72" font-family="Noto Serif" font-size="26" fill="#FF6B35" letter-spacing="2" font-weight="bold">${config.brandName}</text>
     <!-- Date top-right -->
     <text x="1136" y="72" font-family="JetBrains Mono" font-size="18" fill="#55534f" text-anchor="end">${escapeXml(date)}</text>
     <!-- Divider -->

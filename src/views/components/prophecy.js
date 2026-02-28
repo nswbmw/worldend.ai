@@ -10,7 +10,7 @@ export const prophecyCard = `
           <button
             class="share-btn w-[22px] h-[22px] p-0 flex items-center justify-center border-0 bg-transparent cursor-pointer transition-colors duration-200"
             :class="copied ? 'shared' : ''"
-            @click.prevent.stop="shareStory(prophecy, $data)"
+            @click.prevent.stop="shareProphecy(prophecy, $data)"
             title="Share">
             <svg x-show="!copied" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">

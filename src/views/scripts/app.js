@@ -61,9 +61,9 @@ const appScript = `
         window.location.href = parts.join('/') + window.location.search;
       },
 
-      async shareStory(story, localData) {
-        const url = story.url;
-        const title = story.tag || story.slug;
+      async shareProphecy(prophecy, localData) {
+        const url = prophecy.url;
+        const title = prophecy.tag || prophecy.slug;
         if (navigator.share) {
           try { await navigator.share({ title, url }); } catch(e) {}
         } else {
@@ -80,8 +80,8 @@ const appScript = `
         }
       },
 
-      shareToX(story) {
-        const xUrl = 'https://x.com/compose/post?url=' + encodeURIComponent(story.url);
+      shareToX(prophecy) {
+        const xUrl = 'https://x.com/compose/post?url=' + encodeURIComponent(prophecy.url);
         window.open(xUrl, '_blank');
       },
 

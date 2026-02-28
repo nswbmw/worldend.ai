@@ -1,3 +1,5 @@
+import config from '#lib/config.js'
+
 const layout = `<!DOCTYPE html>
 <html lang="{{lang}}">
 <head>
@@ -20,7 +22,7 @@ const layout = `<!DOCTYPE html>
       } catch(e) {}
     })()
   </script>
-  <title>{{title}}WorldEnd.ai</title>
+  <title>{{title}}${config.brandName}</title>
   {{> headMeta}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />

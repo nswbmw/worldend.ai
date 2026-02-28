@@ -1,9 +1,11 @@
+import config from '#lib/config.js'
+
 const notFound = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 — WorldEnd.ai</title>
+  <title>404 — ${config.brandName}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles/404.css" />
@@ -12,7 +14,7 @@ const notFound = `<!DOCTYPE html>
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="logo-mark">WorldEnd.ai</a>
+      <a href="/" class="logo-mark">${config.brandName}</a>
     </div>
   </nav>
   <main class="page">

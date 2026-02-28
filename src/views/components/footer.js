@@ -1,8 +1,10 @@
+import config from '#lib/config.js'
+
 const footer = `
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-copyright">
-      ©{{currentYear}} WorldEnd.ai. All rights reserved.
+      ©{{currentYear}} ${config.brandName}. All rights reserved.
     </div>
     <div class="footer-links">
       <a href="https://github.com/nswbmw/worldend.ai" target="_blank" rel="noopener noreferrer" class="footer-link" title="GitHub">

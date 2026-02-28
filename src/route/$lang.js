@@ -111,6 +111,9 @@ export default function route (app) {
           prophecy.content = translatedContent
         }
 
+        prophecy.url = `${config.webHost}/${lang}/${prophecy.slug}`
+        prophecy.image = `${prophecy.url}/og`
+
         return prophecy
       }), { concurrency: 20 })
 
@@ -128,9 +131,10 @@ export default function route (app) {
         const canonical = `${config.webHost}/${lang}${qs.toString() ? `?${qs.toString()}` : ''}`
         const description = keyword
           ? `Search results for ${keyword}`
-          : 'Daily prophecies from AI models'
+          : config.description
         const head = {
           canonical,
+          title: keyword ? `${keyword} - ${config.brandName}` : config.brandName,
           description,
         }
         const initJson = JSON.stringify({
@@ -138,8 +142,7 @@ export default function route (app) {
           keyword: keyword || null,
           prophecies: prophecies.map(p => ({
             ...p,
-            content: p.content.replaceAll('\n', '<br>'),
-            url: `${config.webHost}/${lang}/${p.slug}`
+            content: p.content.replaceAll('\n', '<br>')
           })),
           page,
           pageSize,
@@ -150,7 +153,7 @@ export default function route (app) {
           stats,
           prophecyRanking
         })
-        ctx.res.type = 'text/html'
+        ctx.res.type = 'html'
         ctx.res.body = renderLayout(
           ctx,
           { lang, title: '', head, initJson },
@@ -160,13 +163,10 @@ export default function route (app) {
           }
         )
       } else if (type === 'rss') {
-        ctx.res.type = 'application/xml'
+        ctx.res.type = 'xml'
         ctx.res.body = generateRss(prophecies)
       } else {
-        ctx.res.body = prophecies.map(p => ({
-          ...p,
-          url: `${config.webHost}/${lang}/${p.slug}`
-        }))
+        ctx.res.body = prophecies
       }
     }
   )
@@ -178,18 +178,18 @@ function generateRss (prophecies) {
   return `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>${config.webHost}/rss</id>
-    <title>WorldEnd - ${dayjs().format('YYYY-MM-DD')}</title>
+    <title>${config.brandName}</title>
     <updated>${updated}</updated>
     <link rel="alternate" href="${config.webHost}"/>
-    <subtitle>WorldEnd.ai</subtitle>
-    <icon>${config.webHost}/favicon.png</icon>
+    <subtitle>${config.description}</subtitle>
+    <icon>${config.webHost}/favicon.ico</icon>
     <rights>All rights reserved ${dayjs().format('YYYY')}, ${config.domain}</rights>
     ${prophecies.map(prophecy => `
       <entry>
           <title type="html"><![CDATA[${prophecy.date} / ${prophecy.modelId} / ${prophecy.tag}]]></title>
           <id>${prophecy.slug}</id>
-          <link href="${config.webHost}/${prophecy.slug}"/>
-          <updated>${updated}</updated>
+          <link href="${prophecy.url}"/>
+          <updated>${prophecy.date}</updated>
           <content type="html"><![CDATA[${prophecy.content}]]></content>
           <author>
               <name>${prophecy.modelId}</name>
