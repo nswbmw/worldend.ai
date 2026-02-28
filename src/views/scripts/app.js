@@ -81,7 +81,7 @@ const appScript = `
       },
 
       shareToX(prophecy) {
-        const xUrl = 'https://x.com/compose/post?url=' + encodeURIComponent(prophecy.url);
+        const xUrl = 'https://x.com/intent/post?url=' + encodeURIComponent(prophecy.url);
         window.open(xUrl, '_blank');
       },
 

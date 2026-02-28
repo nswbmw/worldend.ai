@@ -13,7 +13,7 @@ export default function route (app) {
         const pngBuffer = await obj.arrayBuffer()
         ctx.res.headers = {
           'Content-Type': 'image/png',
-          'Cache-Control': 'public, max-age=31536000'
+          'Cache-Control': 'public, max-age=31536000, immutable'
         }
         ctx.res.body = pngBuffer
       } else {
