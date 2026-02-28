@@ -165,7 +165,6 @@ export default function route (app) {
       } else {
         ctx.res.body = prophecies.map(p => ({
           ...p,
-          content: p.content.replaceAll('\n', '<br>'),
           url: `${config.webHost}/${lang}/${p.slug}`
         }))
       }
