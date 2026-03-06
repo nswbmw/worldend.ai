@@ -16,7 +16,7 @@ const models = [
     platform: 'Anthropic'
   },
   {
-    id: 'gpt-5.2',
+    id: 'gpt-5.4',
     platform: 'OpenAI'
   },
   {
