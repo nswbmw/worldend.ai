@@ -44,7 +44,7 @@ const models = [
     platform: 'GLM'
   },
   {
-    id: 'minimax-m2.5',
+    id: 'minimax-m2.7',
     platform: 'MiniMax'
   },
   {
