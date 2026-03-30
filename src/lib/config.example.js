@@ -51,6 +51,10 @@ const models = [
     id: 'kimi-k2.5',
     platform: 'Kimi'
   },
+  {
+    id: 'mimo-v2-pro',
+    platform: 'XiaoMi'
+  },
 ]
 const modelIds = models.map(model => model.id)
 
