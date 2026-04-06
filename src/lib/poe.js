@@ -76,7 +76,9 @@ export async function getPoeResponse ({ modelId, prompt }) {
   }
 
   const output = json.choices[0].message.content
-  const tag = output.match(/^Keyword:\s*(.+)\s*$/m)?.[1]?.trim() ?? ''
+  let tag = output.match(/^Keyword:\s*(.+)\s*$/m)?.[1]?.trim() ?? ''
+  // remove **
+  tag = tag.replace(/^\*\*/, '').replace(/\*\*$/, '')
   const content = output.match(/^Explanation:\s*([\s\S]*)$/m)?.[1]?.trim() ?? ''
 
   if (!tag || !content) {

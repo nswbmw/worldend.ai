@@ -55,6 +55,10 @@ const models = [
     id: 'mimo-v2-pro',
     platform: 'XiaoMi'
   },
+  {
+    id: 'mistral-small-4',
+    platform: 'Mistral'
+  },
 ]
 const modelIds = models.map(model => model.id)
 
