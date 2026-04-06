@@ -36,7 +36,7 @@ const models = [
     platform: 'DeepSeek'
   },
   {
-    id: 'qwen3.5-plus',
+    id: 'qwen3.6-plus',
     platform: 'Qwen'
   },
   {
