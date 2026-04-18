@@ -12,7 +12,7 @@ const langs = [
 
 const models = [
   {
-    id: 'claude-opus-4.6',
+    id: 'claude-opus-4.7',
     platform: 'Anthropic'
   },
   {
