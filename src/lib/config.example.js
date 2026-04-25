@@ -16,7 +16,7 @@ const models = [
     platform: 'Anthropic'
   },
   {
-    id: 'gpt-5.4',
+    id: 'gpt-5.5',
     platform: 'OpenAI'
   },
   {
@@ -28,7 +28,7 @@ const models = [
     platform: 'xAI'
   },
   {
-    id: 'llama-4-maverick-t',
+    id: 'llama-3.3-70b',
     platform: 'Meta'
   },
   {
@@ -48,7 +48,7 @@ const models = [
     platform: 'MiniMax'
   },
   {
-    id: 'kimi-k2.5',
+    id: 'kimi-k2.6',
     platform: 'Kimi'
   },
   {
