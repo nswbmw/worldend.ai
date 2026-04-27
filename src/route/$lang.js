@@ -70,7 +70,7 @@ export default function route (app) {
       const modelId = query.modelId
       const tag = query.tag
       const page = Math.max(1, parseInt(query.page) || 1)
-      const pageSize = Math.min(100, Math.max(1, parseInt(query.pageSize) || 10))
+      const pageSize = Math.min(100, Math.max(10, parseInt(query.pageSize) || 10))
       const type = query.type
 
       let prophecies = []
