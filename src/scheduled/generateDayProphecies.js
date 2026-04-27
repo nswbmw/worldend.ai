@@ -3,6 +3,7 @@ import { drizzle } from 'drizzle-orm/d1'
 import { shuffle } from 'lodash-es'
 import { MockContext } from '@hoajs/context-storage'
 import { Resvg } from '@cf-wasm/resvg/workerd'
+import pAll from 'p-all'
 
 import config from '#lib/config.js'
 import { sendNotification } from '#lib/telegram.js'
@@ -20,7 +21,7 @@ export default async function generateDayProphecies (event, env, ctx) {
   }
 
   await MockContext(mockCtx, async () => {
-    for (const model of models) {
+    await pAll(models.map(model => async () => {
       const modelId = model.id
       try {
         const { tag, content } = await getPoeResponse({
@@ -42,18 +43,18 @@ export default async function generateDayProphecies (event, env, ctx) {
         console.error(e)
         await sendNotification(`generateDayProphecies error: ${JSON.stringify({ date, model, error: e.message }, null, 2)}`)
       }
-    }
-
+    }), { concurrency: 5 })
+    
     const fontBuffers = await loadFontsFromR2(env)
 
     // Check missing images
     const last100Prophecies = await getProphecies({ page: 1, pageSize: 100 })
-    for (const prophecy of last100Prophecies) {
+    await pAll(last100Prophecies.map(prophecy => async () => {
       const key = `images/${prophecy.slug}.png`
       // Check if PNG exists
       const exist = await env.R2.head(key)
       if (exist) {
-        continue
+        return
       }
 
       // Generate PNG
@@ -72,7 +73,7 @@ export default async function generateDayProphecies (event, env, ctx) {
           contentType: 'image/png'
         }
       })
-    }
+    }), { concurrency: 5 })
   })
 }
 
@@ -121,7 +122,7 @@ async function loadFontsFromR2 (env) {
   const buffers = await Promise.all(
     FONT_FILES.map(async (filename) => {
       const obj = await env.R2.get(`fonts/${filename}`)
-      return await obj.arrayBuffer()
+      return obj ? await obj.arrayBuffer() : null
     })
   )
   const fontBuffers = buffers.filter(Boolean).map(buf => new Uint8Array(buf))
