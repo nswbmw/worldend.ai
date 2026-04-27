@@ -77,9 +77,11 @@ export async function translateWithCache ({ ctx, sourceLang, targetLang, text })
     targetLang
   })
 
-  ctx.executionCtx.waitUntil(ctx.env.KV.put(key, translatedText, {
-    expirationTtl: config.google.translateTTL
-  }))
+  if (translatedText) {
+    ctx.executionCtx.waitUntil(ctx.env.KV.put(key, translatedText, {
+      expirationTtl: config.google.translateTTL
+    }))
+  }
 
   return translatedText
 }
