@@ -40,7 +40,7 @@ export default async function generateDayProphecies (event, env, ctx) {
         }
       } catch (e) {
         console.error(e)
-        await sendNotification(`generateDayProphecies error: ${JSON.stringify({ date, model, error: e.message }, null, 2)}`)
+        await sendNotification(`generateDayProphecies error: ${JSON.stringify({ date, model, error: e.cause?.message ?? e.message }, null, 2)}`)
       }
     }
 
