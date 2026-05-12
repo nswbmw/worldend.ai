@@ -24,7 +24,7 @@ const models = [
     platform: 'Google'
   },
   {
-    id: 'grok-4',
+    id: 'grok-4.3',
     platform: 'xAI'
   },
   {
@@ -40,7 +40,7 @@ const models = [
     platform: 'Qwen'
   },
   {
-    id: 'glm-5',
+    id: 'glm-5.1-fw',
     platform: 'GLM'
   },
   {
