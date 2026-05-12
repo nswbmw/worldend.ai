@@ -70,7 +70,7 @@ export default function route (app) {
       const modelId = query.modelId
       const tag = query.tag
       const page = Math.max(1, parseInt(query.page) || 1)
-      const pageSize = Math.min(100, Math.max(1, parseInt(query.pageSize) || 10))
+      const pageSize = Math.min(100, Math.max(10, parseInt(query.pageSize) || 10))
       const type = query.type
 
       let prophecies = []
@@ -173,7 +173,7 @@ export default function route (app) {
 }
 
 function generateRss (prophecies) {
-  const updated = `${dayjs().format('YYYY-MM-DD')} 00:00:00`
+  const updated = dayjs().toISOString()
 
   return `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -189,7 +189,7 @@ function generateRss (prophecies) {
           <title type="html"><![CDATA[${prophecy.date} / ${prophecy.modelId} / ${prophecy.tag}]]></title>
           <id>${prophecy.slug}</id>
           <link href="${prophecy.url}"/>
-          <updated>${prophecy.date}</updated>
+          <updated>${prophecy.date}T00:00:00Z</updated>
           <content type="html"><![CDATA[${prophecy.content}]]></content>
           <author>
               <name>${prophecy.modelId}</name>
