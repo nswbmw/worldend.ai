@@ -68,9 +68,15 @@ export async function getPoeResponse ({ modelId, prompt }) {
     }
   }
   */
-  const json = await res.json()
-  // console.dir(json, { depth: 10 })
+  const text = await res.text()
+  // console.log(text)
 
+  let json
+  try {
+    json = JSON.parse(text)
+  } catch (e) {
+    throw new Error(text)
+  }
   if (json.error) {
     throw new Error(JSON.stringify(json.error))
   }
