@@ -12,7 +12,7 @@ const langs = [
 
 const models = [
   {
-    id: 'claude-opus-4.7',
+    id: 'claude-opus-4.8',
     platform: 'Anthropic'
   },
   {
@@ -36,7 +36,7 @@ const models = [
     platform: 'DeepSeek'
   },
   {
-    id: 'qwen3.6-plus',
+    id: 'qwen3.7-plus',
     platform: 'Qwen'
   },
   {
@@ -52,7 +52,7 @@ const models = [
     platform: 'Kimi'
   },
   {
-    id: 'mimo-v2-pro',
+    id: 'mimo-v2.5-pro',
     platform: 'XiaoMi'
   },
   {
