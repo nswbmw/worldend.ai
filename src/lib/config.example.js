@@ -16,7 +16,7 @@ const models = [
     platform: 'Anthropic'
   },
   {
-    id: 'gpt-5.5',
+    id: 'gpt-5.4',
     platform: 'OpenAI'
   },
   {
@@ -24,7 +24,7 @@ const models = [
     platform: 'Google'
   },
   {
-    id: 'grok-4.3',
+    id: 'grok-4.5',
     platform: 'xAI'
   },
   {
@@ -32,15 +32,15 @@ const models = [
     platform: 'Meta'
   },
   {
-    id: 'deepseek-r1',
+    id: 'deepseek-v3.2',
     platform: 'DeepSeek'
   },
   {
-    id: 'qwen3.7-plus',
+    id: 'qwen3.7-max',
     platform: 'Qwen'
   },
   {
-    id: 'glm-5.1-fw',
+    id: 'glm-5.2',
     platform: 'GLM'
   },
   {
