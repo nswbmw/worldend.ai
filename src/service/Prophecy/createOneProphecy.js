@@ -27,4 +27,5 @@ export async function createOneProphecy ({ slug, date, modelId, tag, content }) 
       tag,
       content
     })
+    .onConflictDoNothing()
 }
