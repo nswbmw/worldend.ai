@@ -26,26 +26,26 @@
     "sql:export:remote": "npx wrangler d1 export worldend --remote --output worldend.sql"
   },
   "devDependencies": {
-    "drizzle-kit": "0.31.9",
-    "eslint": "9.39.2",
-    "neostandard": "0.12.2",
-    "wrangler": "4.69.0"
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.4",
+    "neostandard": "0.13.0",
+    "wrangler": "4.125.0"
   },
   "dependencies": {
-    "@cf-wasm/resvg": "0.3.3",
-    "@hoajs/bodyparser": "0.1.2",
+    "@cf-wasm/resvg": "0.4.0",
+    "@hoajs/bodyparser": "0.2.0",
     "@hoajs/context-storage": "0.1.2",
     "@hoajs/cors": "0.1.3",
     "@hoajs/mustache": "0.1.1",
-    "@hoajs/nana": "0.1.1",
+    "@hoajs/nana": "0.1.2",
     "@hoajs/tiny-router": "0.1.1",
-    "cloudflare-kv-cache": "1.0.1",
-    "dayjs": "1.11.19",
-    "drizzle-orm": "0.45.1",
-    "hoa": "0.3.5",
-    "lodash-es": "4.17.23",
-    "nana": "1.3.0",
+    "cloudflare-kv-cache": "1.0.3",
+    "dayjs": "1.11.23",
+    "drizzle-orm": "0.45.2",
+    "hoa": "0.4.1",
+    "lodash-es": "4.18.1",
+    "nana": "1.4.0",
     "p-all": "5.0.1",
-    "validator": "13.15.26"
+    "validator": "13.15.35"
   }
 }

@@ -44,6 +44,7 @@ export default function route (app) {
       const prophecy = await getOneProphecyWithCache({ slug })
       if (!prophecy) {
         if (type === 'html') {
+          ctx.res.status = 404
           ctx.res.type = 'text/html'
           ctx.res.body = renderNotFound(ctx)
         } else {

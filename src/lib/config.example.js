@@ -20,23 +20,23 @@ const models = [
     platform: 'OpenAI'
   },
   {
-    id: 'gemini-3.1-pro',
+    id: 'gemini-3.7-flash',
     platform: 'Google'
   },
   {
-    id: 'grok-4.5',
+    id: 'grok-4.6',
     platform: 'xAI'
   },
   {
-    id: 'llama-3.3-70b',
+    id: 'llama-3.3-70b-t',
     platform: 'Meta'
   },
   {
-    id: 'deepseek-v3.2',
+    id: 'deepseek-v4-pro-e',
     platform: 'DeepSeek'
   },
   {
-    id: 'qwen3.7-max',
+    id: 'qwen3.8-max-el',
     platform: 'Qwen'
   },
   {
@@ -44,11 +44,11 @@ const models = [
     platform: 'GLM'
   },
   {
-    id: 'minimax-m2.7',
+    id: 'minimax-m3-t',
     platform: 'MiniMax'
   },
   {
-    id: 'kimi-k2.6',
+    id: 'kimi-k3',
     platform: 'Kimi'
   },
   {
@@ -68,6 +68,7 @@ const config = {
   domain: 'worldend.ai',
   email: 'admin@worldend.ai',
   webHost: 'https://worldend.ai',
+  description: 'A living archive of AI-generated doomsday prophecies. Daily predictions from Claude, GPT, Gemini, Grok, and other LLMs about how the world might end.',
   langs,
   models,
   modelIds,

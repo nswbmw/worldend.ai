@@ -10,15 +10,7 @@ import { getStatsWithCache } from '#service/Prophecy/getStatsWithCache.js'
 export async function createOneProphecy ({ slug, date, modelId, tag, content }) {
   const ctx = getContext()
 
-  await Promise.all([
-    getModelIdsWithCache.clear(),
-    getOneProphecyWithCache.clear({ slug }),
-    getProphecySlugsWithCache.clear(),
-    getProphecyTagsWithCache.clear(),
-    getStatsWithCache.clear()
-  ])
-
-  return ctx.db
+  await ctx.db
     .insert(Prophecy)
     .values({
       slug,
@@ -28,4 +20,12 @@ export async function createOneProphecy ({ slug, date, modelId, tag, content }) 
       content
     })
     .onConflictDoNothing()
+
+  await Promise.all([
+    getModelIdsWithCache.clear(),
+    getOneProphecyWithCache.clear({ slug }),
+    getProphecySlugsWithCache.clear(),
+    getProphecyTagsWithCache.clear(),
+    getStatsWithCache.clear()
+  ])
 }

@@ -25,6 +25,7 @@ const notFound = `<!DOCTYPE html>
       </div>
       <h1 class="title">This prophecy <em>does not exist</em></h1>
       <p class="desc">The page you're looking for has either been lost to the void,<br>or never existed in the first place — much like our future.</p>
+      <p style="margin-top:24px;"><a href="/en" class="back-link" style="color:var(--orange);text-decoration:none;font-family:Geist Mono,monospace;font-size:.8rem;">← Back to Home</a></p>
     </div>
   </main>
 </body>
