@@ -1,4 +1,6 @@
 const prophecies = `
+  <h1 class="sr-only">{{head.title}}</h1>
+  <p class="sr-only">{{head.description}}</p>
   <div x-show="loading">
     <div class="skeleton-list">
       <template x-for="i in 10">

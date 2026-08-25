@@ -4,7 +4,7 @@ const nav = `
   <nav class="nav">
     <div class="nav-inner">
       <div class="logo-wrap">
-        <a :href="'/' + currentLang" class='decoration-none'><span class="logo-mark">${config.brandName}</span></a>
+        <a href="/{{lang}}" :href="'/' + currentLang" class='decoration-none'><span class="logo-mark">${config.brandName}</span></a>
       </div>
       <div class="nav-spacer"></div>
       <div class="search-wrap">

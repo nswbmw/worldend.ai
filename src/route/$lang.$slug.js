@@ -81,15 +81,37 @@ export default function route (app) {
           getProphecyTagsWithCache()
         ])
         const description = String(prophecy.content || '').replace(/\s+/g, ' ').trim().slice(0, 160)
+        const contentHtml = prophecy.content.replaceAll('\n', '<br>')
+        const prophecyData = {
+          ...prophecy,
+          contentHtml
+        }
         const jsonLd = JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
           headline: prophecy.tag,
-          datePublished: prophecy.date,
-          dateModified: prophecy.date,
-          mainEntityOfPage: prophecy.url,
-          author: { '@type': 'Organization', name: prophecy.modelId },
-          publisher: { '@type': 'Organization', name: config.brandName }
+          description,
+          image: [prophecy.image],
+          inLanguage: lang,
+          datePublished: `${prophecy.date}T00:00:00Z`,
+          dateModified: `${prophecy.date}T00:00:00Z`,
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': prophecy.url
+          },
+          author: {
+            '@type': 'Organization',
+            name: prophecy.modelId
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: config.brandName,
+            url: config.webHost,
+            logo: {
+              '@type': 'ImageObject',
+              url: `${config.webHost}/logo.jpg`
+            }
+          }
         }, null, 2)
         const head = {
           canonical: prophecy.url,
@@ -100,8 +122,8 @@ export default function route (app) {
         const initJson = JSON.stringify({
           lang,
           prophecy: {
-            ...prophecy,
-            content: prophecy.content.replaceAll('\n', '<br>')
+            ...prophecyData,
+            content: contentHtml
           },
           models: modelIds,
           stats,
@@ -110,7 +132,7 @@ export default function route (app) {
         ctx.res.type = 'html'
         ctx.res.body = renderLayout(
           ctx,
-          { lang, head, prophecy, title: `${prophecy.tag} - `, initJson },
+          { lang, head, prophecy: prophecyData, title: `${prophecy.tag} - `, initJson },
           { headMeta: slugMetaTemplate, content: prophecyTemplate }
         )
       } else {

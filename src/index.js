@@ -25,10 +25,24 @@ app.use(async (ctx, next) => {
   if (ctx.req.pathname === '/') {
     ctx.req.pathname = '/en'
   }
-  if (ctx.req.pathname.startsWith('/styles/')) {
+  if (
+    ctx.req.pathname.startsWith('/styles/') ||
+    ctx.req.pathname === '/favicon.svg' ||
+    ctx.req.pathname === '/logo.jpg' ||
+    ctx.req.pathname === '/og.png'
+  ) {
     return ctx.env.ASSETS.fetch(ctx.req)
   }
   await next()
+
+  // Apply security headers to all responses
+  ctx.res.set({
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'SAMEORIGIN',
+    'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; base-uri 'self'; frame-ancestors 'self'"
+  })
 
   if (!ctx.res.status || (ctx.res.status >= 500)) {
     ctx.executionCtx.waitUntil(sendNotification(`Unexpectedly Error. Request: ${JSON.stringify({

@@ -1,11 +1,11 @@
 export const prophecyCard = `
   <div class="prophecy-card relative">
     <div class="prophecy-body">
-      <div><span class="tag" x-text="prophecy.modelId"></span></div>
-      <h1 class="prophecy-title" x-text="prophecy.tag"></h1>
-      <div class="prophecy-content" x-html="prophecy.content"></div>
+      <div><span class="tag" x-text="prophecy.modelId">{{prophecy.modelId}}</span></div>
+      <h1 class="prophecy-title" x-text="prophecy.tag">{{prophecy.tag}}</h1>
+      <div class="prophecy-content" x-html="prophecy.content">{{{prophecy.contentHtml}}}</div>
       <div class="meta-info mt-4 flex flex-wrap items-center justify-between text-sm">
-        <span x-text="prophecy.date"></span>
+        <time datetime="{{prophecy.date}}" x-text="prophecy.date">{{prophecy.date}}</time>
         <div class="share-wrap relative inline-flex items-center gap-2" x-data="{copied:false}">
           <button
             class="share-btn w-[22px] h-[22px] p-0 flex items-center justify-center border-0 bg-transparent cursor-pointer transition-colors duration-200"

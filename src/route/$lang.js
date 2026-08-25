@@ -128,15 +128,47 @@ export default function route (app) {
         if (date) qs.set('date', date)
         if (modelId) qs.set('modelId', modelId)
         if (tag) qs.set('tag', tag)
-        const canonical = `${config.webHost}/${lang}${qs.toString() ? `?${qs.toString()}` : ''}`
+        // Filtered/paginated variants: canonical points to the clean language root
+        // and are not indexed (links still followed) to avoid index bloat.
+        const isFiltered = Boolean(keyword || date || modelId || tag || page > 1)
+        const canonical = `${config.webHost}/${lang}`
+        const robots = isFiltered ? 'noindex,follow' : null
         const description = keyword
-          ? `Search results for ${keyword}`
+          ? `Search results for "${keyword}" on ${config.brandName}. Browse AI-generated doomsday prophecies matching your query.`
           : config.description
+        const jsonLd = JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: config.brandName,
+          url: `${config.webHost}/${lang}`,
+          description: config.description,
+          inLanguage: lang,
+          publisher: {
+            '@type': 'Organization',
+            name: config.brandName,
+            url: config.webHost,
+            logo: {
+              '@type': 'ImageObject',
+              url: `${config.webHost}/logo.jpg`
+            }
+          },
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: {
+              '@type': 'EntryPoint',
+              urlTemplate: `${config.webHost}/${lang}?keyword={search_term_string}`
+            },
+            'query-input': 'required name=search_term_string'
+          }
+        }, null, 2)
         const head = {
           canonical,
-          title: keyword ? `${keyword} - ${config.brandName}` : config.brandName,
+          title: keyword ? `${keyword} - ${config.brandName}` : `AI Doomsday Prophecies Archive — ${config.brandName}`,
           description,
+          robots,
+          jsonLd
         }
+        const pageTitle = keyword ? `${keyword} - ` : 'AI Doomsday Prophecies Archive — '
         const initJson = JSON.stringify({
           lang,
           keyword: keyword || null,
@@ -156,7 +188,7 @@ export default function route (app) {
         ctx.res.type = 'html'
         ctx.res.body = renderLayout(
           ctx,
-          { lang, title: '', head, initJson },
+          { lang, title: pageTitle, head, initJson, prophecies },
           {
             content: propheciesTemplate,
             headMeta: layoutMetaTemplate
@@ -182,7 +214,7 @@ function generateRss (prophecies) {
     <updated>${updated}</updated>
     <link rel="alternate" href="${config.webHost}"/>
     <subtitle>${config.description}</subtitle>
-    <icon>${config.webHost}/favicon.ico</icon>
+    <icon>${config.webHost}/favicon.svg</icon>
     <rights>All rights reserved ${dayjs().format('YYYY')}, ${config.domain}</rights>
     ${prophecies.map(prophecy => `
       <entry>

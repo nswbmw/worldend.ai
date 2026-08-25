@@ -1,7 +1,7 @@
 const sidebar = `
   <aside class="sidebar">
     <div class="sidebar-widget fade-in">
-      <div class="sidebar-title" x-text="t('stats')"></div>
+      <h2 class="sidebar-title" x-text="t('stats')">Stats</h2>
       <div class="stats-grid">
         <div class="stat-cell">
           <div class="stat-value" x-text="stats.prophecyCount">—</div>
@@ -22,7 +22,7 @@ const sidebar = `
       </div>
     </div>
     <div class="sidebar-widget fade-in" style="animation-delay:0.07s;">
-      <div class="sidebar-title" x-text="t('models')"></div>
+      <h2 class="sidebar-title" x-text="t('models')">Models</h2>
       <div class="models-wrap">
         <template x-for="m in models">
           <a :href="'/' + currentLang + '?modelId=' + m" class="tag tag-clickable" x-text="m"></a>
@@ -30,7 +30,7 @@ const sidebar = `
       </div>
     </div>
     <div class="sidebar-widget fade-in" style="animation-delay:0.13s;">
-      <div class="sidebar-title" x-text="t('prophecyRanking')"></div>
+      <h2 class="sidebar-title" x-text="t('prophecyRanking')">Prophecy Ranking</h2>
       <div class="ranking-list">
         <template x-for="(u, i) in prophecyRanking">
           <a :href="'/' + currentLang + '?tag=' + encodeURIComponent(u.name)" class="ranking-item tag-clickable decoration-none">

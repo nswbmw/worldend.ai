@@ -11,8 +11,8 @@ const slugMeta = `
   <meta property="og:image" content="{{prophecy.image}}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{prophecy.tag}}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@nswbmw" />
   <meta name="twitter:title" content="{{head.title}}" />
   <meta name="twitter:description" content="{{head.description}}" />
   <meta name="twitter:image" content="{{prophecy.image}}" />
